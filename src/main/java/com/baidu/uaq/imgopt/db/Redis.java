@@ -15,6 +15,7 @@ public class Redis {
     public Redis(String redisAddr, int redisPort) {
         this.redisAddr = redisAddr;
         this.redisPort = redisPort;
+        conn();
     }
 
     private void conn() {
@@ -22,18 +23,18 @@ public class Redis {
     }
 
     public void addKV(String key, String value) {
-        conn();
+        // conn();
         jedis.set(key, value);
         jedis.expire(key, 3600 * 2);
     }
 
     public void pushTask(String task) {
-        conn();
+        // conn();
         jedis.lpush(config.getTaskList(), task);
     }
 
     public String popTask(String task) {
-        conn();
+        // conn();
         return jedis.rpop(config.getTaskList());
     }
 
