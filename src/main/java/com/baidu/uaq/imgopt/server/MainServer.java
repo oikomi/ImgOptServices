@@ -48,6 +48,7 @@ public class MainServer extends HttpServlet {
             buffer.append(line);
         }
         String reqBody = buffer.toString();
+        System.out.println(reqBody);
 
         if (reqBody == null) {
             respCmd.setCode(-1);
