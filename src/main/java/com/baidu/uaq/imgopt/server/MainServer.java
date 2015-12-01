@@ -38,6 +38,7 @@ public class MainServer extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println(req.getRemoteUser());
         PrintWriter pw = resp.getWriter();
         RespCmd respCmd = new RespCmd();
         StringBuilder buffer = new StringBuilder();
