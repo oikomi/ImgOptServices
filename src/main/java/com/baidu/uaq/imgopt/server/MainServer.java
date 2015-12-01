@@ -56,7 +56,9 @@ public class MainServer extends HttpServlet {
         }
 
         Redis redis = new Redis(config.getRedisAddr(), config.getRedisPort());
+        System.out.println("store in redis");
         redis.pushTask(reqBody);
+        System.out.println("store in redis  end");
         respCmd.setCode(0);
         respCmd.setInfo("success");
 

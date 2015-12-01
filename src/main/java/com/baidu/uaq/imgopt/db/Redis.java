@@ -20,6 +20,7 @@ public class Redis {
 
     private void conn() {
         jedis = new Jedis(redisAddr, redisPort);
+        System.out.println(jedis);
     }
 
     public void addKV(String key, String value) {
@@ -30,6 +31,7 @@ public class Redis {
 
     public void pushTask(String task) {
         // conn();
+        System.out.println(config.getTaskList());
         jedis.lpush(config.getTaskList(), task);
     }
 
