@@ -13,7 +13,7 @@
     </resultMap>
 
     <select id="getStat" parameterType="int" resultMap="statmap">
-        select * from stats WHERE id=#{value}
+        select * from stats WHERE id=#{id}
     </select>
 
     <!--<select id="getStat" parameterType="int" resultType="map">-->
