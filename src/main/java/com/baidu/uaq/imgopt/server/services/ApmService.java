@@ -20,18 +20,18 @@ import java.io.InputStream;
 @Service
 public class ApmService {
 
-
-    // private ApmMapper apmMapper;
+    @Resource
+    private ApmMapper apmMapper;
 
     public Stat getStatById(int id) throws Exception {
         // SqlSession sqlSession = this.getSqlSession();
-        String resource = "sqlconfig/SqlMapConfig.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-
-        ApmMapper apmMapper = sqlSession.getMapper(ApmMapper.class);
+//        String resource = "sqlconfig/SqlMapConfig.xml";
+//        InputStream inputStream = Resources.getResourceAsStream(resource);
+//
+//        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+//        SqlSession sqlSession = sqlSessionFactory.openSession();
+//
+//        ApmMapper apmMapper = sqlSession.getMapper(ApmMapper.class);
 
         return apmMapper.getStat(id);
     }
