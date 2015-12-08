@@ -5,12 +5,27 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>main</servlet-name>
-        <servlet-class>com.baidu.uaq.imgopt.server.MainServer</servlet-class>
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:config/springmvc.xml</param-value>
+        </init-param>
     </servlet>
-
+    
+    
     <servlet-mapping>
-        <servlet-name>main</servlet-name>
-        <url-pattern>/uaq/v1/imgopt</url-pattern>
+        <servlet-name>springmvc</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!--<servlet>-->
+        <!--<servlet-name>main</servlet-name>-->
+        <!--<servlet-class>com.baidu.uaq.imgopt.server.MainServer</servlet-class>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>main</servlet-name>-->
+        <!--<url-pattern>/uaq/v1/imgopt</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>
