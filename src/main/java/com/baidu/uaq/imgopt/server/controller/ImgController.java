@@ -4,6 +4,10 @@ import com.baidu.uaq.imgopt.bean.RespCmd;
 import com.baidu.uaq.imgopt.config.Config;
 import com.baidu.uaq.imgopt.config.Const;
 import com.baidu.uaq.imgopt.db.Redis;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,6 +52,15 @@ public class ImgController {
         System.out.println("store in redis");
         redis.pushTask(reqBody);
         System.out.println("store in redis  end");
+
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        try {
+            HttpGet httpget = new HttpGet("http://127.0.0.1:8020/uaq/v1/doimgopt");
+            CloseableHttpResponse response = httpclient.execute(httpget);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         respCmd.setCode(0);
         respCmd.setInfo("success");
 
