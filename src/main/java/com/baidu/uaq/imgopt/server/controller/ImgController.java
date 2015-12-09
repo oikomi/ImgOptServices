@@ -51,6 +51,8 @@ public class ImgController {
         if (reqBody == null) {
             respCmd.setCode(-1);
             respCmd.setInfo("error");
+
+            return respCmd;
         }
 
         Redis redis = new Redis(config.getRedisAddr(), config.getRedisPort());
@@ -60,20 +62,20 @@ public class ImgController {
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
         CloseableHttpResponse response = null;
-        try {
-            HttpGet httpget = new HttpGet("http://127.0.0.1:8020/uaq/v1/doimgopt");
-            response = httpclient.execute(httpget);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (response != null) {
-                try {
-                    response.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+//        try {
+//            HttpGet httpget = new HttpGet("http://127.0.0.1:8020/uaq/v1/doimgopt");
+//            response = httpclient.execute(httpget);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (response != null) {
+//                try {
+//                    response.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
 
         respCmd.setCode(0);
         respCmd.setInfo("success");
