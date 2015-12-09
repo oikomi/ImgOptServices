@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by baidu on 15/12/7.
@@ -54,11 +55,20 @@ public class ImgController {
         System.out.println("store in redis  end");
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
         try {
             HttpGet httpget = new HttpGet("http://127.0.0.1:8020/uaq/v1/doimgopt");
-            CloseableHttpResponse response = httpclient.execute(httpget);
+            response = httpclient.execute(httpget);
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         respCmd.setCode(0);
