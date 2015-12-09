@@ -36,9 +36,13 @@ public class ImgController {
     }
 
     @RequestMapping(value = "/imgopt", method = RequestMethod.GET)
-    public String imgoptMonitor() {
+    public @ResponseBody RespCmd imgoptMonitor() {
+        RespCmd respCmd = new RespCmd();
 
-        return "ok";
+        respCmd.setCode(0);
+        respCmd.setInfo("success");
+
+        return respCmd;
     }
 
     @RequestMapping(value = "/imgopt", method = RequestMethod.POST)
