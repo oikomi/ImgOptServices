@@ -30,6 +30,12 @@ public class ImgController {
         f.mkdirs();
     }
 
+    @RequestMapping(value = "/imgopt", method = RequestMethod.GET)
+    public String imgoptMonitor() {
+
+        return "ok";
+    }
+
     @RequestMapping(value = "/imgopt", method = RequestMethod.POST)
     public @ResponseBody RespCmd imgopt(@RequestBody String reqBody) {
         RespCmd respCmd = new RespCmd();
